@@ -22,7 +22,11 @@ namespace To_Do_App
                 "- c   Completes an task"
                 );
         }
-            
+
+        public void ErrorEnableToRemove()
+        {
+            Console.WriteLine("Unable to remove: no index provided");
+        }
 
 
 
@@ -31,5 +35,6 @@ namespace To_Do_App
 
 
 
-}
+
+    }
 }

@@ -29,17 +29,23 @@ namespace To_Do_App
         }
 
 
-        public void ListAdd()
+        public void ListAdd(string listElement)
         {
             StreamWriter sw = new StreamWriter("TasksInText.txt", true);
-            string line = "Feed the monkey";
-            sw.WriteLine(line);
+            sw.WriteLine(listElement);
             sw.Close();
         }
 
         public void ErrorHandling()
         {
             Console.WriteLine("Unable to add: no task provided");
+        }
+
+        public void RemoveLines(int number)
+        {
+            var file = new List<string>(System.IO.File.ReadAllLines("TasksInText.txt"));
+            file.RemoveAt(number);
+            File.WriteAllLines("TasksInText.txt", file.ToArray());
         }
 
     }

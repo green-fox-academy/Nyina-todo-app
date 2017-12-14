@@ -23,18 +23,34 @@ namespace To_Do_App
                 fileHandler.FileReader();
             }
 
-            else if (args.Contains("-al"))
-            {
-                fileHandler.ListAdd();
-            }
             else if (args.Contains("-a"))
+            {   //ha nem adok meg 2. argumentumot, akkor dobjon hibaüzenetet
+                if (args.Length == 1)
+                {
+                    fileHandler.ErrorHandling();
+                }
+                else
+                {   //itt hivatkozom be, hogy a 2. argumentumként mit adjon hozzá a listához
+                    fileHandler.ListAdd(args[1]);
+                }
+            }
+
+
+            else if (args.Contains("-r"))
             {
-                fileHandler.ErrorHandling();
+                if (args.Length == 1)
+                {
+                    printer.ErrorEnableToRemove();
+                }
+                else
+                {
+                    fileHandler.RemoveLines(Int32.Parse(args[1]));
+                }
             }
 
             //else if (args[0] == "-l" && args[1] == "-a")
 
-                //Console.ReadLine();
+            //Console.ReadLine();
         }
     }
 }
